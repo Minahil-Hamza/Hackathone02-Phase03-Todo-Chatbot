@@ -1,0 +1,30 @@
+# Render Blueprint - Infrastructure as Code
+# Deploy with: https://render.com/deploy?repo=<your-repo-url>
+
+services:
+  # Backend API Service
+  - type: web
+    name: ai-todo-chatbot-api
+    runtime: python
+    region: oregon # or singapore, frankfurt, ohio
+    plan: free # or starter, standard, pro
+    rootDir: backend
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set manually in dashboard
+      - key: OPENAI_API_KEY
+        sync: false # Set manually in dashboard
+      - key: JWT_SECRET_KEY
+        sync: false # Set manually in dashboard - generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+      - key: FRONTEND_URL
+        sync: false # Set manually in dashboard - your Vercel frontend URL (e.g., https://your-app.vercel.app)
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    autoDeploy: true # Auto-deploy on push to main branch

@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Vibrant Design System
+   ============================================ */
+:root {
+  --color-primary: #8B5CF6;
+  --color-primary-dark: #7c3aed;
+  --color-primary-light: #a78bfa;
+  --color-pink: #EC4899;
+  --color-teal: #14B8A6;
+  --color-cyan: #06B6D4;
+  --color-orange: #F97316;
+  --color-rose: #FB7185;
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #F9FAFB;
+  --color-bg-tertiary: #F3F4F6;
+
+  --color-text: #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --color-bg: #0F172A;
+  --color-bg-secondary: #1E293B;
+  --color-bg-tertiary: #334155;
+
+  --color-text: #F9FAFB;
+  --color-text-secondary: #D1D5DB;
+  --color-text-muted: #9CA3AF;
+
+  --color-border: #334155;
+  --color-border-light: #1E293B;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Component Styles
+   ============================================ */
+@layer components {
+  /* Gradient Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-4 py-2.5 rounded-lg font-medium text-sm;
+    @apply text-white;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2;
+    @apply transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    background: linear-gradient(135deg, #8B5CF6, #EC4899);
+    box-shadow: 0 4px 14px 0 rgb(139 92 246 / 0.35);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #7c3aed, #db2777);
+    box-shadow: 0 6px 20px 0 rgb(139 92 246 / 0.45);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-4 py-2.5 rounded-lg font-medium text-sm;
+    @apply bg-white/80 text-gray-700;
+    @apply border border-gray-200;
+    @apply hover:bg-white hover:border-purple-300 hover:text-purple-700;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2;
+    @apply transition-all duration-200;
+    backdrop-filter: blur(8px);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-4 py-2.5 rounded-lg font-medium text-sm;
+    @apply text-gray-600;
+    @apply hover:bg-purple-50 hover:text-purple-700;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500;
+    @apply transition-all duration-200;
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-sm;
+    @apply border border-gray-100;
+  }
+
+  .card-hover {
+    @apply card;
+    @apply transition-all duration-200;
+    @apply hover:shadow-md hover:border-purple-200;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-4 py-2.5 rounded-lg text-sm;
+    @apply bg-white/80;
+    @apply border border-gray-200;
+    @apply text-gray-900;
+    @apply placeholder:text-gray-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+    @apply transition-all duration-200;
+    backdrop-filter: blur(8px);
+  }
+
+  .input-error {
+    @apply border-red-500 focus:ring-red-500;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply text-white;
+    background: linear-gradient(135deg, #8B5CF6, #a78bfa);
+  }
+
+  .badge-success {
+    @apply text-white;
+    background: linear-gradient(135deg, #10B981, #34d399);
+  }
+
+  .badge-warning {
+    @apply text-white;
+    background: linear-gradient(135deg, #F97316, #fb923c);
+  }
+
+  .badge-error {
+    @apply text-white;
+    background: linear-gradient(135deg, #EF4444, #f87171);
+  }
+
+  .badge-teal {
+    @apply text-white;
+    background: linear-gradient(135deg, #14B8A6, #06B6D4);
+  }
+
+  .badge-purple {
+    @apply text-white;
+    background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  }
+
+  .badge-orange {
+    @apply text-white;
+    background: linear-gradient(135deg, #F97316, #FB7185);
+  }
+
+  /* Chat Bubbles */
+  .chat-user {
+    @apply text-white;
+    @apply rounded-2xl rounded-br-md;
+    @apply px-4 py-3;
+    background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  }
+
+  .chat-assistant {
+    @apply text-gray-900;
+    @apply rounded-2xl rounded-bl-md;
+    @apply px-4 py-3;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+  }
+
+  /* Status Dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-online {
+    @apply bg-emerald-500;
+  }
+
+  .status-offline {
+    @apply bg-gray-400;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-gray-200;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #8B5CF6, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-teal {
+    background: linear-gradient(135deg, #14B8A6, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ============================================
+   Auth Page Animated Gradient Background
+   ============================================ */
+.auth-gradient-bg {
+  background: linear-gradient(-45deg, #8B5CF6, #EC4899, #14B8A6, #F97316, #8B5CF6);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.loading-dot {
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.loading-dot:nth-child(3) { animation-delay: 0s; }
+
+/* Skeleton Loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  @apply bg-gray-200 rounded;
+  background: linear-gradient(90deg,
+    rgb(229 231 235) 0%,
+    rgb(243 244 246) 50%,
+    rgb(229 231 235) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8B5CF6, #EC4899);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c3aed, #db2777);
+}
+
+/* ============================================
+   Focus & Accessibility
+   ============================================ */
+*:focus-visible {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
