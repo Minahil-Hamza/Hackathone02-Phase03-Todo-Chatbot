@@ -208,4 +208,9 @@ See individual README files in `backend/` and `frontend/` directories for detail
 
 ## License
 
+DEPLOYMENT!!
+
+vercel=" https://frontend-cyan-seven-81.vercel.app"
+hugging face=" https://minahil-hamza-ai-todo-chatbot-backend.hf.space │"
+
 MIT
